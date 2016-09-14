@@ -52,16 +52,11 @@ $(document).ready(function(){
 
     /** Usage **/
     var myInitialBearing = geo.bearing(0,0,45,45);
-    $('.stdout').text($('.stdout').text()+'\nInitial bearing ' + myInitialBearing);
+    $('.stdout').text($('.stdout').text() + '\nInitial bearing ' + myInitialBearing);
 	
-	function get_bearings(x1, y1, x2, y2){
-		var x = (y2-y1) * Math.cos((x1+x2)/2);
-    	var y = (φ2-);
-    	var d = Math.sqrt(x*x + y*y) * R;
-	}
 	
 	Compass.init(function (method) {
-	  $('.stdout').text($('.stdout').text()+'\nCompass heading by ' + method);
+	  $('.stdout').text($('.stdout').text() + '\nCompass heading by ' + method);
 	});
 	var watchID = Compass.watch(function (heading) {
 	  $('.degrees').text(heading);
