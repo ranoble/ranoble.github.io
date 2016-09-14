@@ -6,8 +6,62 @@
 <body>
 <script>
 $(document).ready(function(){
+	var field_of_view = 63.54;
+	
+	  var geo = {
+        /**
+         * Calculate the bearing between two positions as a value from 0-360
+         *
+         * @param lat1 - The latitude of the first position
+         * @param lng1 - The longitude of the first position
+         * @param lat2 - The latitude of the second position
+         * @param lng2 - The longitude of the second position
+         *
+         * @return int - The bearing between 0 and 360
+         */
+        bearing : function (lat1,lng1,lat2,lng2) {
+            var dLon = this._toRad(lng2-lng1);
+            var y = Math.sin(dLon) * Math.cos(this._toRad(lat2));
+            var x = Math.cos(this._toRad(lat1))*Math.sin(this._toRad(lat2)) - Math.sin(this._toRad(lat1))*Math.cos(this._toRad(lat2))*Math.cos(dLon);
+            var brng = this._toDeg(Math.atan2(y, x));
+            return ((brng + 360) % 360);
+        },
+
+       /**
+         * Since not all browsers implement this we have our own utility that will
+         * convert from degrees into radians
+         *
+         * @param deg - The degrees to be converted into radians
+         * @return radians
+         */
+        _toRad : function(deg) {
+             return deg * Math.PI / 180;
+        },
+
+        /**
+         * Since not all browsers implement this we have our own utility that will
+         * convert from radians into degrees
+         *
+         * @param rad - The radians to be converted into degrees
+         * @return degrees
+         */
+        _toDeg : function(rad) {
+            return rad * 180 / Math.PI;
+        },
+    };
+
+    /** Usage **/
+    var myInitialBearing = geo.bearing(0,0,45,45);
+    $('.stdout').text($('.stdout').text()+'\nInitial bearing ' + myInitialBearing);
+	
+	function get_bearings(x1, y1, x2, y2){
+		var x = (y2-y1) * Math.cos((x1+x2)/2);
+    	var y = (φ2-);
+    	var d = Math.sqrt(x*x + y*y) * R;
+	}
+	
 	Compass.init(function (method) {
-	  $('.stdout').text('Compass heading by ' + method);
+	  $('.stdout').text($('.stdout').text()+'\nCompass heading by ' + method);
 	});
 	var watchID = Compass.watch(function (heading) {
 	  $('.degrees').text(heading);
