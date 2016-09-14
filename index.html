@@ -1,0 +1,19 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ai.github.com/compass.js/compass.js"></script>
+</head>
+<body>
+<script>
+$(document).ready(function(){
+	Compass.init(function (method) {
+	  console.log('Compass heading by ' + method);
+	});
+	var watchID = Compass.watch(function (heading) {
+	  $('.degrees').text(heading);
+	});
+});
+</script>
+<div class="degrees"></div>
+</body>
+</html>
