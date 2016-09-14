@@ -48,15 +48,30 @@ $(document).ready(function(){
         _toDeg : function(rad) {
             return rad * 180 / Math.PI;
         },
+        
+        distance: function(lat1, lon1, lat2, lon2) {
+		  var p = 0.017453292519943295;    // Math.PI / 180
+ 		  var c = Math.cos;
+		  var a = 0.5 - c((lat2 - lat1) * p)/2 + c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))/2;
+
+		  return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+		}
     };
 
     /** Usage **/
     var myInitialBearing = geo.bearing(0,0,45,45);
-    $('.stdout').text($('.stdout').text() + '\nInitial bearing ' + myInitialBearing);
-	
+    
+    //51.5210211,-0.1422322
+    
+    function log(txt){
+     	$('.stdout').text($('.stdout').text() + '\n' + txt);
+    }
+    
+    log('Initial bearing ' + myInitialBearing);
+	log('Initial distance ' + geo.distance(0,0,45,45));
 	
 	Compass.init(function (method) {
-	  $('.stdout').text($('.stdout').text() + '\nCompass heading by ' + method);
+	  log('Compass heading by ' + method);
 	});
 	var watchID = Compass.watch(function (heading) {
 	  $('.degrees').text(heading);
