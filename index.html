@@ -7,13 +7,14 @@
 <script>
 $(document).ready(function(){
 	Compass.init(function (method) {
-	  console.log('Compass heading by ' + method);
+	  $('.stdout').text('Compass heading by ' + method);
 	});
 	var watchID = Compass.watch(function (heading) {
 	  $('.degrees').text(heading);
 	});
 });
 </script>
-<div class="degrees"></div>
+Direction: <div class="degrees"></div>
+Out: <div class="stdout"></div>
 </body>
 </html>
