@@ -109,10 +109,11 @@ $(document).ready(function(){
 			
 			var anglediff = (params.heading - params.bearing + 180 + 360) % 360 - 180;
 			if (((deviance_allowed * -1) < anglediff) || ((deviance_allowed) > anglediff)){
+			    var calc = {'deviance_allowed': deviance_allowed, 'anglediff': anglediff, 'percentage': log(((anglediff + deviance_allowed) / field_of_view) * 100.0)};
+			    $('.degrees').text(JSON.stringify(calc));
 				return ((anglediff + deviance_allowed) / field_of_view) * 100.0;
 			}
-			var calc = {'deviance_allowed': deviance_allowed, 'anglediff': anglediff, 'percentage': log(((anglediff + deviance_allowed) / field_of_view) * 100.0)};
-			$('.degrees').text(JSON.stringify(calc));
+			
 			return -1;
 			
 		}
