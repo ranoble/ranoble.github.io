@@ -61,7 +61,7 @@ $(document).ready(function(){
 
 
 	svg = d3.select('svg');
-    g = svg.append('g');
+    g = svg.append('g').attr("visibility", "hidden");
     rect = g.append('rect').attr('width', 150)
                 .attr('height', 50)
                 .attr('x', 0)
