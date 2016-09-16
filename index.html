@@ -194,13 +194,13 @@ $(document).ready(function(){
 	} else {
 		alert('fail at video')
 	}
-	if(navigator.webkitGetUserMedia) { // WebKit-prefixed
-	        alert('webkit support?');
-                navigator.webkitGetUserMedia({ "video": true }, function(stream){
-                    video.src = window.webkitURL.createObjectURL(stream);
-                    video.play();
-                }, errBack);
-            }
+// 	if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+// 	        alert('webkit support?');
+//                 navigator.webkitGetUserMedia({ "video": true }, function(stream){
+//                     video.src = window.webkitURL.createObjectURL(stream);
+//                     video.play();
+//                 }, errBack);
+//             }
 
     // Get access to the camera!
     // if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
