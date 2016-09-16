@@ -198,7 +198,16 @@ $(document).ready(function(){
                     video.play();
                 }, errBack);
             }
-
+navigator.mediaDevices.enumerateDevices()
+  .then(function(devices) {
+    devices.forEach(function(device) {
+      alert(device.kind + ": " + device.label +
+        " id = " + device.deviceId);
+    });
+  })
+  .catch(function(err) {
+    alert(err.name + ": " + error.message);
+  });
     // Get access to the camera!
     // if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 //         // Not adding `{ audio: true }` since we only want video now
