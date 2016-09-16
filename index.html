@@ -22,10 +22,12 @@ video#video {
 </style>
 </head>
 <body>
+<!-- 
 <device type="media" onchange="update(this.data)"></device>
 <video id="video"  width="640" height="480"  playsinline autoplay></video>
+ -->
 <!-- <canvas id="canvas" width="640" height="480"></canvas> -->
-
+<rect width="150" height="100"  x="100" y="100" ><p>This is some text</p></rect>
 
 
 <script>
@@ -181,33 +183,33 @@ $(document).ready(function(){
 	
 	
 	
-	var video = document.getElementById('video');
-
-	if (Modernizr.getusermedia){
-		var userMedia = Modernizr.prefixed('getUserMedia', navigator);
-		userMedia({video: true}, function(stream) {
-//         	alert('asdasdad');
-            video.src = window.URL.createObjectURL(stream);
-            video.play();
-        }, function(){alert("Error getting audio stream from getUserMedia");});
-  //...
-	}
-	if(navigator.webkitGetUserMedia) { // WebKit-prefixed
-                navigator.webkitGetUserMedia({ "video": true }, function(stream){
-                    video.src = window.webkitURL.createObjectURL(stream);
-                    video.play();
-                }, errBack);
-            }
-navigator.mediaDevices.enumerateDevices()
-  .then(function(devices) {
-    devices.forEach(function(device) {
-      alert(device.kind + ": " + device.label +
-        " id = " + device.deviceId);
-    });
-  })
-  .catch(function(err) {
-    alert(err.name + ": " + error.message);
-  });
+// 	var video = document.getElementById('video');
+// 
+// 	if (Modernizr.getusermedia){
+// 		var userMedia = Modernizr.prefixed('getUserMedia', navigator);
+// 		userMedia({video: true}, function(stream) {
+// //         	alert('asdasdad');
+//             video.src = window.URL.createObjectURL(stream);
+//             video.play();
+//         }, function(){alert("Error getting audio stream from getUserMedia");});
+//   //...
+// 	}
+// 	if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+//                 navigator.webkitGetUserMedia({ "video": true }, function(stream){
+//                     video.src = window.webkitURL.createObjectURL(stream);
+//                     video.play();
+//                 }, errBack);
+//             }
+// navigator.mediaDevices.enumerateDevices()
+//   .then(function(devices) {
+//     devices.forEach(function(device) {
+//       alert(device.kind + ": " + device.label +
+//         " id = " + device.deviceId);
+//     });
+//   })
+//   .catch(function(err) {
+//     alert(err.name + ": " + error.message);
+//   });
     // Get access to the camera!
     // if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 //         // Not adding `{ audio: true }` since we only want video now
