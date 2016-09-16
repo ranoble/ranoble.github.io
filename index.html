@@ -191,11 +191,8 @@ $(document).ready(function(){
             video.play();
         }, function(){alert("Error getting audio stream from getUserMedia");});
   //...
-	} else {
-		alert('fail at video')
 	}
 	if(navigator.webkitGetUserMedia) { // WebKit-prefixed
-	        alert('webkit support?');
                 navigator.webkitGetUserMedia({ "video": true }, function(stream){
                     video.src = window.webkitURL.createObjectURL(stream);
                     video.play();
