@@ -23,13 +23,21 @@ video#video {
 </style>
 </head>
 <body>
+<device type="media" onchange="update(this.data)"></device>
 <video id="video"  width="640" height="480"  playsinline autoplay></video>
 <!-- <canvas id="canvas" width="640" height="480"></canvas> -->
 
 
 
 <script>
+
+
 $(document).ready(function(){
+
+    $('device').onchange(function(stream){
+    	$('video').src = stream.url;
+    });
+
 	  var field_of_view = 63.54;
 	  var pub = {
 		"lat": 51.517803,
@@ -173,19 +181,19 @@ $(document).ready(function(){
 	
 	
 	
-	var video = document.getElementById('video');
-
-	if (Modernizr.getusermedia){
-		var userMedia = Modernizr.prefixed('getUserMedia', navigator);
-		userMedia({video: true}, function(stream) {
-        	alert('asdasdad');
-            video.src = window.URL.createObjectURL(stream);
-            video.play();
-        }, function(){alert("Error getting audio stream from getUserMedia");});
-  //...
-	} else {
-		alert('fail at video')
-	}
+// 	var video = document.getElementById('video');
+// 
+// 	if (Modernizr.getusermedia){
+// 		var userMedia = Modernizr.prefixed('getUserMedia', navigator);
+// 		userMedia({video: true}, function(stream) {
+// //         	alert('asdasdad');
+//             video.src = window.URL.createObjectURL(stream);
+//             video.play();
+//         }, function(){alert("Error getting audio stream from getUserMedia");});
+//   //...
+// 	} else {
+// 		alert('fail at video')
+// 	}
 
     // Get access to the camera!
     // if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
