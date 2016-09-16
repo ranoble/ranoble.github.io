@@ -2,8 +2,16 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/compass.js"></script>
+<style>
+
+</style>
 </head>
 <body>
+<video id="video" width="640" height="480" autoplay></video>
+<canvas id="canvas" width="640" height="480"></canvas>
+
+
+
 <script>
 $(document).ready(function(){
 	  var field_of_view = 63.54;
@@ -16,6 +24,21 @@ $(document).ready(function(){
 	  	"lat": 51.5210211,
 	  	"lng": -0.1422322
 	  }
+	  
+	  var params = {
+	    // coords of the user at the current point
+	  	"location": null,
+	  	// between points
+	  	"bearing": null,
+	  	// where on the screen is the target point situated
+	  	"view_position": null,
+	  	// how far until the pub
+	  	"distance": null,
+	  	// from compass
+	  	"heading": null
+	  }
+	  
+	  
 	
 	  var geo = {
         /**
@@ -64,8 +87,42 @@ $(document).ready(function(){
 		  var a = 0.5 - c((lat2 - lat1) * p)/2 + c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))/2;
 
 		  return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+		},
+		
+		watch_location: function(){
+			if (navigator.geolocation) {
+       			navigator.geolocation.watchPosition(updateLocation);
+    		}
+		},
+		
+		calculate_viewposition: function(params){
+			var deviance_allowed = field_of_view / 2;
+			var anglediff = (params.heading - params.bearing + 180 + 360) % 360 - 180;
+			if (((deviance_allowed * -1) < anglediff) || ((deviance_allowed) > anglediff)){
+				return ((anglediff + deviance_allowed) / field_of_view) * 100.0;
+			}
+			return -1;
+			
 		}
     };
+    
+    function updateLocation(position){
+	  	params.location = {
+	  		'lat': position.coords.latitude, 
+	  		'lng': position.coords.longitude
+	  	};
+	  	
+	  	updateView();
+	  }
+	  
+	  function updateView(){
+	  	if (params.location != null && params.bearing != null && params.heading != null){
+	  		params.distance = geo.distance(params.location.lat, params.location.lng, pub.lat, pub.lng);
+	  		params.bearing = geo.bearing(params.location.lat, params.location.lng, pub.lat, pub.lng);
+	  		params.viewposition = geo.calculate_viewposition(params);
+	  	}
+	  	$('.degrees').text(JSON.stringify(params));
+	  }
 
     /** Usage **/
     var myInitialBearing = geo.bearing(me.lat,me.lng,pub.lat,pub.lng);
@@ -79,12 +136,29 @@ $(document).ready(function(){
     log('Initial bearing ' + myInitialBearing);
 	log('Initial distance ' + geo.distance(me.lat,me.lng,pub.lat,pub.lng));
 	
+	
 	Compass.init(function (method) {
 	  log('Compass heading by ' + method);
 	});
 	var watchID = Compass.watch(function (heading) {
-	  $('.degrees').text(heading);
+	  //$('.degrees').text(heading);
+	  params.heading = heading;
+	  updateView();
+	  //get width
+	  //get bearing wrt view
+	  //position 
 	});
+	
+	var video = document.getElementById('video');
+
+    // Get access to the camera!
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Not adding `{ audio: true }` since we only want video now
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+        });
+    }
 });
 </script>
 Direction: <div class="degrees"></div>
