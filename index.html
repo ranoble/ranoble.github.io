@@ -160,11 +160,11 @@ $(document).ready(function(){
 
 	if (Modernizr.getusermedia){
 		var userMedia = Modernizr.prefixed('getUserMedia', navigator);
-		userMedia({video: true}).then(function(stream) {
+		userMedia({video: true}, function(stream) {
         	console.log('asdasdad');
             video.src = window.URL.createObjectURL(stream);
             video.play();
-        });
+        }, function(){console.warn("Error getting audio stream from getUserMedia");});
   //...
 	}
 
