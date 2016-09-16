@@ -7,7 +7,7 @@
 </style>
 </head>
 <body>
-<video id="video" width="640" height="480" autoplay></video>
+<!-- <video id="video" width="640" height="480" autoplay></video> -->
 <canvas id="canvas" width="640" height="480"></canvas>
 
 
@@ -38,6 +38,14 @@ $(document).ready(function(){
 	  	"heading": null
 	  }
 	  
+      function updateLocation(position){
+	  	params.location = {
+	  		'lat': position.coords.latitude, 
+	  		'lng': position.coords.longitude
+	  	};
+	  	
+	  	updateView();
+	  }
 	  
 	
 	  var geo = {
@@ -106,15 +114,7 @@ $(document).ready(function(){
 		}
     };
     
-    function updateLocation(position){
-	  	params.location = {
-	  		'lat': position.coords.latitude, 
-	  		'lng': position.coords.longitude
-	  	};
-	  	
-	  	updateView();
-	  }
-	  
+
 	  function updateView(){
 	  	if (params.location != null && params.bearing != null && params.heading != null){
 	  		params.distance = geo.distance(params.location.lat, params.location.lng, pub.lat, pub.lng);
