@@ -181,19 +181,19 @@ $(document).ready(function(){
 	
 	
 	
-// 	var video = document.getElementById('video');
-// 
-// 	if (Modernizr.getusermedia){
-// 		var userMedia = Modernizr.prefixed('getUserMedia', navigator);
-// 		userMedia({video: true}, function(stream) {
-// //         	alert('asdasdad');
-//             video.src = window.URL.createObjectURL(stream);
-//             video.play();
-//         }, function(){alert("Error getting audio stream from getUserMedia");});
-//   //...
-// 	} else {
-// 		alert('fail at video')
-// 	}
+	var video = document.getElementById('video');
+
+	if (Modernizr.getusermedia){
+		var userMedia = Modernizr.prefixed('getUserMedia', navigator);
+		userMedia({video: true}, function(stream) {
+//         	alert('asdasdad');
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+        }, function(){alert("Error getting audio stream from getUserMedia");});
+  //...
+	} else {
+		alert('fail at video')
+	}
 
     // Get access to the camera!
     // if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
