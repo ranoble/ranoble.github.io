@@ -126,7 +126,7 @@ $(document).ready(function(){
 	  		
 	  		params.distance = geo.distance(params.location.lat, params.location.lng, pub.lat, pub.lng);
 	  		params.bearing = geo.bearing(params.location.lat, params.location.lng, pub.lat, pub.lng);
-	  		params.viewposition = geo.calculate_viewposition(params);
+	  		params.view_position = geo.calculate_viewposition(params);
 	  		$('.degrees').text(JSON.stringify(params));
 	  	}
 	  	
