@@ -104,14 +104,15 @@ $(document).ready(function(){
 		},
 		
 		calculate_viewposition: function(params){
+			
 			var deviance_allowed = field_of_view / 2;
-			log(deviance_allowed);
+			
 			var anglediff = (params.heading - params.bearing + 180 + 360) % 360 - 180;
-			log(anglediff);
 			if (((deviance_allowed * -1) < anglediff) || ((deviance_allowed) > anglediff)){
-				log(((anglediff + deviance_allowed) / field_of_view) * 100.0);
 				return ((anglediff + deviance_allowed) / field_of_view) * 100.0;
 			}
+			var calc = {'deviance_allowed': deviance_allowed, 'anglediff': anglediff, 'percentage': log(((anglediff + deviance_allowed) / field_of_view) * 100.0)};
+			$('.degrees').text(JSON.stringify(calc));
 			return -1;
 			
 		}
@@ -124,7 +125,7 @@ $(document).ready(function(){
 	  		params.bearing = geo.bearing(params.location.lat, params.location.lng, pub.lat, pub.lng);
 	  		params.viewposition = geo.calculate_viewposition(params);
 	  	}
-	  	$('.degrees').text(JSON.stringify(params));
+	  	
 	  }
 
     /** Usage **/
