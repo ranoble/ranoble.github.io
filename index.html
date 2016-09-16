@@ -105,8 +105,11 @@ $(document).ready(function(){
 		
 		calculate_viewposition: function(params){
 			var deviance_allowed = field_of_view / 2;
+			log(deviance_allowed);
 			var anglediff = (params.heading - params.bearing + 180 + 360) % 360 - 180;
+			log(anglediff);
 			if (((deviance_allowed * -1) < anglediff) || ((deviance_allowed) > anglediff)){
+				log(anglediff + deviance_allowed) / field_of_view) * 100.0;
 				return ((anglediff + deviance_allowed) / field_of_view) * 100.0;
 			}
 			return -1;
