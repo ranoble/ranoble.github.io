@@ -116,7 +116,7 @@ $(document).ready(function(){
     
 
 	  function updateView(){
-	  	if (params.location != null && params.bearing != null && params.heading != null){
+	  	if (params.location != null && params.heading != null){
 	  		params.distance = geo.distance(params.location.lat, params.location.lng, pub.lat, pub.lng);
 	  		params.bearing = geo.bearing(params.location.lat, params.location.lng, pub.lat, pub.lng);
 	  		params.viewposition = geo.calculate_viewposition(params);
