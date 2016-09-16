@@ -30,13 +30,14 @@ video#video {
 
 
 <script>
-
+    function update(stream){
+    alert('adsadasads');
+    	document.getElementById('video').src = stream.url;
+    });
 
 $(document).ready(function(){
 
-    $('device').onchange(function(stream){
-    	$('video').src = stream.url;
-    });
+
 
 	  var field_of_view = 63.54;
 	  var pub = {
