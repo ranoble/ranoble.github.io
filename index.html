@@ -137,33 +137,29 @@ $(document).ready(function(){
      	$('.stdout').text($('.stdout').text() + '\n' + txt);
     }
     
-    log('Initial bearing ' + myInitialBearing);
-	log('Initial distance ' + geo.distance(me.lat,me.lng,pub.lat,pub.lng));
+//     log('Initial bearing ' + myInitialBearing);
+// 	log('Initial distance ' + geo.distance(me.lat,me.lng,pub.lat,pub.lng));
 	
 	
 	Compass.init(function (method) {
-	  log('Compass heading by ' + method);
+	  
 	});
 	var watchID = Compass.watch(function (heading) {
-	  //$('.degrees').text(heading);
 	  params.heading = heading;
 	  updateView();
-	  //get width
-	  //get bearing wrt view
-	  //position 
 	});
 	geo.watch_location();
 	
-	var video = document.getElementById('video');
-
-    // Get access to the camera!
-    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        // Not adding `{ audio: true }` since we only want video now
-        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-            video.src = window.URL.createObjectURL(stream);
-            video.play();
-        });
-    }
+// 	var video = document.getElementById('video');
+// 
+//     // Get access to the camera!
+//     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+//         // Not adding `{ audio: true }` since we only want video now
+//         navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+//             video.src = window.URL.createObjectURL(stream);
+//             video.play();
+//         });
+//     }
 });
 </script>
 Direction: <div class="degrees"></div>
