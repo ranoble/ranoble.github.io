@@ -90,7 +90,7 @@ $(document).ready(function(){
     			});
     pint = g.append('circle')
                 .attr('cx', 180)
-                .attr('cy', 30)
+                .attr('cy', 25)
                 .attr('r', 20)
                 .attr('fill', 'black');
     pint.on("click", function() {
@@ -205,7 +205,8 @@ $(document).ready(function(){
 				ret = ((anglediff + deviance_allowed) / field_of_view) * 100.0;
 			}
 			if (ret < 0){
-				//d3.selectAll("g").attr("visibility", "hidden");
+				d3.selectAll("g").attr("visibility", "hidden");
+				d3.selectAll("g").attr('transform', 'translate(300, 100)');
 			} else {
 				var translation = $('svg').width() - ($('svg').width() * ((anglediff + deviance_allowed) / field_of_view)) - (rect_width / 2) ;
 				d3.selectAll("g").attr('transform', 'translate('+translation+', 100)');
