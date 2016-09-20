@@ -82,15 +82,15 @@ $(document).ready(function(){
     directions = g.append('circle')
                 .attr('x', 150)
                 .attr('y', 30)
-                .attr('rx', 10)
-                .attr('fill', 'black')
-                .on("click", function() {
+                .attr('r', 10)
+                .attr('fill', 'black');
+    directions.on("click", function() {
         			document.location = getDirectionsUrl();
     			});
     pint = g.append('circle')
                 .attr('x', 190)
                 .attr('y', 30)
-                .attr('rx', 10)
+                .attr('r', 10)
                 .attr('fill', 'black');
     pint.on("click", function() {
         alert('Order pint distance '+params.distance);
