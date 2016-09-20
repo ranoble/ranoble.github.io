@@ -206,7 +206,7 @@ $(document).ready(function(){
 	  		params.distance = geo.distance(params.location.lat, params.location.lng, pub.lat, pub.lng);
 	  		params.bearing = geo.bearing(params.location.lat, params.location.lng, pub.lat, pub.lng);
 	  		params.view_position = geo.calculate_viewposition(params);
-	  		$('.degrees').text(JSON.stringify(params));
+	  		
 	  	} else {
 	  		if (params.location == null){
 	  		$('.degrees').text("No location");
@@ -236,6 +236,7 @@ $(document).ready(function(){
 			//heading = heading + 90.0;
 			//alert(heading);
 		}
+		$('.degrees').text(heading);
 	    params.heading = heading;
 	    updateView();
 	});
