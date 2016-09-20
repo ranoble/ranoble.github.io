@@ -233,7 +233,7 @@ $(document).ready(function(){
 	var watchID = Compass.watch(function (heading) {
 		var query = window.matchMedia("(orientation:landscape)");
 		if (query.matches){
-			heading = heading - 90.0;
+			//heading = heading - 90.0;
 		}
         params.orientation = screen.orientation.type;
 	    params.heading = heading;
