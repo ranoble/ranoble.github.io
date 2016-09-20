@@ -236,6 +236,7 @@ $(document).ready(function(){
 // 		    //correct for landscape
 // 			heading = heading - 90.0;
 // 		}
+        params.orientation = screen.orientation.type;
 	    params.heading = heading;
 	    updateView();
 	});
