@@ -46,7 +46,7 @@ svg {
 <video id="video"  width="640" height="480"  playsinline autoplay></video>
  -->
 <!-- <canvas id="canvas" width="640" height="480"></canvas> -->
-gah
+Touchevent
 <div class="degrees">circles</div>
 <svg width="720" height="500">
 
@@ -85,7 +85,7 @@ $(document).ready(function(){
                 .attr('cy', 25)
                 .attr('r', 20)
                 .attr('fill', 'black');
-    directions.on("click", function() {
+    directions.on("touchstart", function() {
         			document.location = getDirectionsUrl();
     			});
     pint = g.append('circle')
@@ -93,7 +93,7 @@ $(document).ready(function(){
                 .attr('cy', 25)
                 .attr('r', 20)
                 .attr('fill', 'black');
-    pint.on("click", function() {
+    pint.on("touchstart", function() {
         alert('Order pint distance '+params.distance);
     });
 
