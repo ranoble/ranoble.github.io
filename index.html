@@ -46,7 +46,7 @@ svg {
 <video id="video"  width="640" height="480"  playsinline autoplay></video>
  -->
 <!-- <canvas id="canvas" width="640" height="480"></canvas> -->
-<div class="degrees"></div>
+<div class="degrees">asdadadssadas</div>
 <svg width="720" height="500">
 
 </svg>
@@ -222,7 +222,10 @@ $(document).ready(function(){
 	  
 	});
 	var watchID = Compass.watch(function (heading) {
-		params.orientation = screen.orientation.type
+		if (screen.orientation.type.startsWith('landscape')){
+		    //correct for landscape
+			heading = heading - 90.0;
+		}
 	    params.heading = heading;
 	    updateView();
 	});
