@@ -61,10 +61,10 @@ svg {
 
 $(document).ready(function(){
 
-
+	rect_width = 220
 	svg = d3.select('svg');
     g = svg.append('g').attr("visibility", "hidden");
-    rect = g.append('rect').attr('width', 150)
+    rect = g.append('rect').attr('width', rect_width)
                 .attr('height', 50)
                 .attr('x', 0)
                 .attr('y', 0)
@@ -72,18 +72,32 @@ $(document).ready(function(){
                 .attr('ry', 3)
                 .style('fill', 'white')
                 .attr('stroke', 'black');
-	g.append("rect")
+                
+    
+	
     text = g.append('text').text('Pub X')
                 .attr('x', 50)
                 .attr('y', 30)
                 .attr('fill', 'black');
+    directions = g.append('circle')
+                .attr('x', 150)
+                .attr('y', 30)
+                .attr('rx', 10)
+                .attr('fill', 'black')
+                .on("click", function() {
+        			document.location = getDirectionsUrl();
+    			});
+    pint = g.append('circle')
+                .attr('x', 190)
+                .attr('y', 30)
+                .attr('rx', 10)
+                .attr('fill', 'black');
+    pint.on("click", function() {
+        alert('Order pint distance '+params.distance);
+    });
 
 
 	  var field_of_view = 63.54;
-	  // var pub = {
-// 		"lat": 51.517803,
-// 		"lng":-0.143787
-// 	  };
 
       var pub = {
 		"lat": 51.52094563220733,
@@ -107,6 +121,10 @@ $(document).ready(function(){
 	  	// from compass
 	  	"heading": null,
 	  	"orientation": null
+	  }
+	  
+	  function getDirectionsUrl(){
+	  	return "http://maps.google.com/maps?saddr="+params.location.lat+","+params.location.lng+"&daddr="+pub.lat+","+pub.lng;
 	  }
 	  
       function updateLocation(position){
@@ -188,7 +206,7 @@ $(document).ready(function(){
 			if (ret < 0){
 				d3.selectAll("g").attr("visibility", "hidden");
 			} else {
-				var translation = $('svg').width() - ($('svg').width() * ((anglediff + deviance_allowed) / field_of_view)) - 75 ;
+				var translation = $('svg').width() - ($('svg').width() * ((anglediff + deviance_allowed) / field_of_view)) - (rect_width / 2) ;
 				d3.selectAll("g").attr('transform', 'translate('+translation+', 100)');
 				d3.selectAll("g").attr("visibility", "visible");
 			}
@@ -217,10 +235,7 @@ $(document).ready(function(){
 	  	
 	  }
 
-    /** Usage **/
-    var myInitialBearing = geo.bearing(me.lat,me.lng,pub.lat,pub.lng);
-    
-    //51.5210211,-0.1422322
+   
     
     function log(txt){
      	//$('.stdout').text($('.stdout').text() + '\n' + txt);
