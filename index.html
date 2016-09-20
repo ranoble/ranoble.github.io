@@ -204,7 +204,7 @@ $(document).ready(function(){
 				ret = ((anglediff + deviance_allowed) / field_of_view) * 100.0;
 			}
 			if (ret < 0){
-				d3.selectAll("g").attr("visibility", "hidden");
+				//d3.selectAll("g").attr("visibility", "hidden");
 			} else {
 				var translation = $('svg').width() - ($('svg').width() * ((anglediff + deviance_allowed) / field_of_view)) - (rect_width / 2) ;
 				d3.selectAll("g").attr('transform', 'translate('+translation+', 100)');
