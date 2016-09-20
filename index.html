@@ -74,7 +74,9 @@ $(document).ready(function(){
                 .style('fill', 'white')
                 .attr('stroke', 'black');
                 
-    
+    rect.on("touchstart", function() {
+        			alert('adasdasdas');
+    			});
 	
     text = g.append('text').text('Pub X')
                 .attr('x', 50)
