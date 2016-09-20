@@ -227,24 +227,21 @@ $(document).ready(function(){
      	//$('.stdout').text($('.stdout').text() + '\n' + txt);
     }
     
-//     log('Initial bearing ' + myInitialBearing);
-// 	log('Initial distance ' + geo.distance(me.lat,me.lng,pub.lat,pub.lng));
-	
 	
 	Compass.init(function (method) {
 	  
 	});
 	var watchID = Compass.watch(function (heading) {
-		if (screen.orientation.type.startsWith('landscape')){
-		    //correct for landscape
-			heading = heading - 90.0;
-		}
+// 		if (screen.orientation.type.startsWith('landscape')){
+// 		    //correct for landscape
+// 			heading = heading - 90.0;
+// 		}
 	    params.heading = heading;
 	    updateView();
 	});
 	geo.watch_location();
 	
-	
+	alert(screen.orientation.type);
 	
 	
 // 	var video = document.getElementById('video');
