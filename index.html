@@ -236,18 +236,19 @@ $(document).ready(function(){
 // 		    //correct for landscape
 // 			heading = heading - 90.0;
 // 		}
+
+		var query = window.matchMedia("(orientation:landscape)");
+		if (query.matches){
+			heading = heading - 90.0;
+		}
         params.orientation = screen.orientation.type;
 	    params.heading = heading;
 	    updateView();
 	});
 	geo.watch_location();
 	
-	var query = window.matchMedia("(orientation:landscape)");
-	alert("Device held " + (query.matches ? "horizontally" : "vertically"));
 	
- 	alert(JSON.stringify(window.screen));
- 	alert(JSON.stringify(window.screen.orientation));
- 	alert(JSON.stringify(window.screen.orientation.type));
+
 	
 	
 // 	var video = document.getElementById('video');
