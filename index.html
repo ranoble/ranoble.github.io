@@ -188,7 +188,7 @@ $(document).ready(function(){
 			if (ret < 0){
 				d3.selectAll("g").attr("visibility", "hidden");
 			} else {
-				var translation = $('svg').width() - ($('svg').width() * ((anglediff + deviance_allowed) / field_of_view));
+				var translation = $('svg').width() - ($('svg').width() * ((anglediff + deviance_allowed) / field_of_view)) - 75 ;
 				d3.selectAll("g").attr('transform', 'translate('+translation+', 100)');
 				d3.selectAll("g").attr("visibility", "visible");
 			}
