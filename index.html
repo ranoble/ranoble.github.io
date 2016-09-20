@@ -183,7 +183,7 @@ $(document).ready(function(){
 			if (((deviance_allowed * -1) < anglediff) && ((deviance_allowed) > anglediff)){
 			    var calc = {'deviance_allowed': deviance_allowed, 'anglediff': anglediff, 'percentage': log(((anglediff + deviance_allowed) / field_of_view) * 100.0)};
 			    //$('.degrees').text(JSON.stringify(calc));
-				ret = 100 - ((anglediff + deviance_allowed) / field_of_view) * 100.0;
+				ret = ((anglediff + deviance_allowed) / field_of_view) * 100.0;
 			}
 			if (ret < 0){
 				d3.selectAll("g").attr("visibility", "hidden");
@@ -233,7 +233,7 @@ $(document).ready(function(){
 	var watchID = Compass.watch(function (heading) {
 		var query = window.matchMedia("(orientation:landscape)");
 		if (query.matches){
-			heading = heading - 90.0;
+			heading = heading + 90.0;
 			//alert(heading);
 		}
 	    params.heading = heading;
