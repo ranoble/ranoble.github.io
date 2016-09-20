@@ -46,6 +46,7 @@ svg {
 <video id="video"  width="640" height="480"  playsinline autoplay></video>
  -->
 <!-- <canvas id="canvas" width="640" height="480"></canvas> -->
+<div class="degrees"></div>
 <svg width="720" height="500">
 
 </svg>
@@ -98,7 +99,8 @@ $(document).ready(function(){
 	  	// how far until the pub
 	  	"distance": null,
 	  	// from compass
-	  	"heading": null
+	  	"heading": null,
+	  	"orientation": null
 	  }
 	  
       function updateLocation(position){
@@ -220,8 +222,9 @@ $(document).ready(function(){
 	  
 	});
 	var watchID = Compass.watch(function (heading) {
-	  params.heading = heading;
-	  updateView();
+		params.orientation = screen.orientation.type
+	    params.heading = heading;
+	    updateView();
 	});
 	geo.watch_location();
 	
