@@ -242,9 +242,9 @@ $(document).ready(function(){
 	});
 	geo.watch_location();
 	
- 	alert(screen);
- 	alert(screen.orientation);
- 	alert(screen.orientation.type);
+ 	alert(JSON.stringify(window.screen));
+ 	alert(JSON.stringify(window.screen.orientation));
+ 	alert(JSON.stringify(window.screen.orientation.type));
 	
 	
 // 	var video = document.getElementById('video');
