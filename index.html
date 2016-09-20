@@ -81,17 +81,17 @@ $(document).ready(function(){
                 .attr('y', 30)
                 .attr('fill', 'black');
     directions = g.append('circle')
-                .attr('x', 150)
-                .attr('y', 30)
-                .attr('r', 10)
+                .attr('cx', 120)
+                .attr('cy', 25)
+                .attr('r', 20)
                 .attr('fill', 'black');
     directions.on("click", function() {
         			document.location = getDirectionsUrl();
     			});
     pint = g.append('circle')
-                .attr('x', 190)
-                .attr('y', 30)
-                .attr('r', 10)
+                .attr('cx', 180)
+                .attr('cy', 30)
+                .attr('r', 20)
                 .attr('fill', 'black');
     pint.on("click", function() {
         alert('Order pint distance '+params.distance);
