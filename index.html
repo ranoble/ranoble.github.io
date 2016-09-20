@@ -184,7 +184,7 @@ $(document).ready(function(){
 			if (((deviance_allowed * -1) < anglediff) && ((deviance_allowed) > anglediff)){
 			    var calc = {'deviance_allowed': deviance_allowed, 'anglediff': anglediff, 'percentage': log(((anglediff + deviance_allowed) / field_of_view) * 100.0)};
 			    //$('.degrees').text(JSON.stringify(calc));
-				ret = ((anglediff + deviance_allowed) / field_of_view) * 100.0;
+				ret = 100 - ((anglediff + deviance_allowed) / field_of_view) * 100.0;
 			}
 			if (ret < 0){
 				d3.selectAll("g").attr("visibility", "hidden");
@@ -241,7 +241,7 @@ $(document).ready(function(){
 	});
 	geo.watch_location();
 	
-	alert(screen.orientation.type);
+ 	alert(screen.orientation.type);
 	
 	
 // 	var video = document.getElementById('video');
