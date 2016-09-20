@@ -236,7 +236,7 @@ $(document).ready(function(){
 			//heading = heading + 90.0;
 			//alert(heading);
 		}
-		$('.degrees').text(heading);
+		$('.degrees').text(heading+":"+params.bearing);
 	    params.heading = heading;
 	    updateView();
 	});
