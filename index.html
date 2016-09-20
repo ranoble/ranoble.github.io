@@ -231,12 +231,11 @@ $(document).ready(function(){
 	  
 	});
 	var watchID = Compass.watch(function (heading) {
-// 		var query = window.matchMedia("(orientation:landscape)");
-// 		if (query.matches){
-// 			//heading = heading - 90.0;
-// 			//alert(heading);
-// 		}
-        params.orientation = screen.orientation.type;
+		var query = window.matchMedia("(orientation:landscape)");
+		if (query.matches){
+			heading = heading - 90.0;
+			//alert(heading);
+		}
 	    params.heading = heading;
 	    updateView();
 	});
