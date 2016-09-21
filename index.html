@@ -255,9 +255,7 @@ $(document).ready(function(){
 	  
 	});
 	var watchID = Compass.watch(function (heading) {
-
-		$('.degrees').text(heading+":"+window.orientation+":"+params.bearing);
-	    params.heading = heading;
+	    params.heading = heading + window.orientation;
 	    updateView();
 	});
 	geo.watch_location();
