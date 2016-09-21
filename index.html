@@ -82,14 +82,15 @@ $(document).ready(function(){
                 .attr('x', 50)
                 .attr('y', 30)
                 .attr('fill', 'black');
-    directions = g.append('circle')
-                .attr('cx', 120)
-                .attr('cy', 25)
-                .attr('r', 20)
-                .attr('fill', 'black');
-    directions.on("touchstart", function() {
-        			document.location = getDirectionsUrl();
-    			});
+    directions = g.append('foreignObject')
+                .attr('x', 120)
+                .attr('y', 30)
+                .attr('width', '50')
+                .attr('height', 20)
+                .append("xhtml:body")
+    			.style("font", "14px 'Helvetica Neue'")
+    			.html("<a class='directions'>link</a>");
+
     pint = g.append('circle')
                 .attr('cx', 180)
                 .attr('cy', 25)
@@ -98,6 +99,10 @@ $(document).ready(function(){
     pint.on("touchstart", function() {
         alert('Order pint distance '+params.distance);
     });
+    
+    $('.directions').on('click', funcrion(e){
+    	alert('asdasdas');
+    })
 
 
 	  var field_of_view = 63.54;
