@@ -46,7 +46,7 @@ svg {
 <video id="video"  width="640" height="480"  playsinline autoplay></video>
  -->
 <!-- <canvas id="canvas" width="640" height="480"></canvas> -->
-Use orientation
+Use touchies
 <div class="degrees">circles</div>
 <svg width="720" height="500">
 
@@ -103,6 +103,9 @@ $(document).ready(function(){
     $('.directions').on('click', function(e){
     	alert('asdasdas');
     });
+    d3.select("svg").on("touchstart", function(e){
+    alert('started the touching')
+    }));
 
 
 	  var field_of_view = 63.54;
