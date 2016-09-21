@@ -64,7 +64,7 @@ $(document).ready(function(){
 
 	rect_width = 220
 	svg = d3.select('svg');
-    g = svg.append('g').attr("visibility", "hidden");
+    g = svg.append('g');
     rect = g.append('rect').attr('width', rect_width)
                 .attr('height', 50)
                 .attr('x', 0)
@@ -73,10 +73,7 @@ $(document).ready(function(){
                 .attr('ry', 3)
                 .style('fill', 'white')
                 .attr('stroke', 'black');
-                
-    rect.on("touchstart", function() {
-        			alert('adasdasdas');
-    			});
+            
 	
     text = g.append('text').text('Pub X')
                 .attr('x', 50)
