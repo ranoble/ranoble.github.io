@@ -250,12 +250,8 @@ $(document).ready(function(){
 	  
 	});
 	var watchID = Compass.watch(function (heading) {
-		var query = window.matchMedia("(orientation:landscape)");
-		if (query.matches){
-			//heading = heading + 90.0;
-			//alert(heading);
-		}
-		$('.degrees').text(heading+":"+params.bearing);
+
+		$('.degrees').text(heading+":"+window.orientation+":"+params.bearing);
 	    params.heading = heading;
 	    updateView();
 	});
